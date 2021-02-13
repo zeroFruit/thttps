@@ -2,9 +2,9 @@
 
 Basic TLS implementation in Go, written as a learning project. Most components are forked from Go version 1.7
 
-tiny-HTTPS is not suitable for real-world use, but may be of interest to others learning about TLS basic, including:
+tiny-HTTPS is not suitable for real-world use, but it may be useful to others who are trying to figure out what is TLS in the code level, with the features including:
 
-- Basic handshaking with no extentions (SNI, ALPN ...)
+- Basic handshaking with no extentions (SNI, ALPN, Session ticket ...)
 - Data transfer and validate encrypted message with MAC for data integrity 
 
 
@@ -52,7 +52,7 @@ To install ttls package, you need to install Go and set your Go workspace first.
    		w.Write([]byte("world\n"))
    	})
    
-       log.Fatal(https.Listen(":8443", "cert.pem", "key.pem", mux))
+       log.Fatal(thttps.Listen(":8443", "cert.pem", "key.pem", mux))
    }
    ```
 
@@ -62,7 +62,7 @@ To install ttls package, you need to install Go and set your Go workspace first.
    $ go run server.go
    ```
 
-4. Using curl you can send HTTP request on your server
+4. Using curl you can send HTTP request on your server (use `--insecure` option for we are using self-signed certificate).
 
    ```
    $ curl --insecure https://localhost:8443/hello
@@ -79,4 +79,4 @@ If you want to see how codes are sturctured or want to see bird-eye view of this
 
 ## Blog Post
 
-If you are not familiar with the SSL/TLS protocols "and" familiar with Korean, you can find the blog post which shows how SSL/TLS protocol works.
+If you are not familiar with the SSL/TLS protocols "and" familiar with Korean, you can find the blog post [here](https://getoutsidedoor.com/2021/02/13/ssl-tls-%ec%97%90-%eb%8c%80%ed%95%b4%ec%84%9c/) which shows how SSL/TLS protocol works.
