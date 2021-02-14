@@ -145,19 +145,6 @@ func (hs *clientHandshakeState) doFullHandshake() error {
 	}
 	hs.finishedHash.Write(shd.marshal())
 
-	//preMasterSecret, ckx, err := hs.suite.ka(c.vers).generateClientKeyExchange(c.config, hs.hello, certs[0])
-	//if err != nil {
-	//	c.sendAlert(alertInternalError)
-	//	return err
-	//}
-	//if ckx == nil {
-	//	c.sendAlert(alertInternalError)
-	//	return errors.New("tls: unexpected ServerKeyExchange")
-	//}
-	//hs.finishedHash.Write(ckx.marshal())
-	//// send clientKeyExchangeMsg message
-	//c.writeRecord(recordTypeHandshake, ckx.marshal())
-
 	preMasterSecret, err := hs.sendClientKeyExchangeMsg(certs[0])
 	if err != nil {
 		return err
