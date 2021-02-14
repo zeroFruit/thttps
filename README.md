@@ -6,6 +6,7 @@ tiny-HTTPS is not suitable for real-world use, but it may be useful to others wh
 
 - Basic handshaking with no extentions (SNI, ALPN, Session ticket ...)
 - Data transfer and validate encrypted message with MAC for data integrity 
+- Only support TLS version 1.2
 
 
 
